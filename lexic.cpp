@@ -18,7 +18,7 @@ std::string getTripleProp(int value, int genderID, int caseID)
 	int hungred = value / 100;
 	if (hungred == 1)
 	{
-		const string oneHungredCases[2] = { "сто", "ста" };
+		const string oneHungredCases[2] = { "СЃС‚Рѕ", "СЃС‚Р°" };
 		if (caseID == 0 || caseID == 3)
 			result += oneHungredCases[0];
 		else
@@ -26,10 +26,10 @@ std::string getTripleProp(int value, int genderID, int caseID)
 	}
 	else if (hungred > 1 && hungred < 5)
 	{
-		const string end[6] = { "сти", "сот", "мстам", "ста", "мястами", "хстах" };
+		const string end[6] = { "СЃС‚Рё", "СЃРѕС‚", "РјСЃС‚Р°Рј", "СЃС‚Р°", "РјСЏСЃС‚Р°РјРё", "С…СЃС‚Р°С…" };
 		if (hungred == 2)
 		{
-			const string two[6] = { "две", "двух", "двум", "две", "двумя", "двух" };
+			const string two[6] = { "РґРІРµ", "РґРІСѓС…", "РґРІСѓРј", "РґРІРµ", "РґРІСѓРјСЏ", "РґРІСѓС…" };
 			result += two[caseID];
 			if (caseID == 3)
 				result += end[0];
@@ -38,7 +38,7 @@ std::string getTripleProp(int value, int genderID, int caseID)
 		}
 		else if (hungred == 3)
 		{
-			const string three[2] = { "три", "тре" };
+			const string three[2] = { "С‚СЂРё", "С‚СЂРµ" };
 			if (caseID == 0 || caseID == 3)
 				result += three[0];
 			else
@@ -47,7 +47,7 @@ std::string getTripleProp(int value, int genderID, int caseID)
 		}
 		else if (hungred == 4)
 		{
-			const string four[2] = { "четыре", "четырьмя" };
+			const string four[2] = { "С‡РµС‚С‹СЂРµ", "С‡РµС‚С‹СЂСЊРјСЏ" };
 			if (caseID == 4)
 				result += four[1];
 			else
@@ -57,9 +57,9 @@ std::string getTripleProp(int value, int genderID, int caseID)
 	}
 	else if (hungred > 4)
 	{
-		const string fiveToNineBegin[5] = { "пят", "шест", "сем", "восем", "девят" };
-		const string fiveToNineEnd[6] = { "ь", "и", "и", "ь", "ью", "и" };
-		const string hungredEnd[6] = { "сот", "сот", "стам", "сот", "стами", "стах" };
+		const string fiveToNineBegin[5] = { "РїСЏС‚", "С€РµСЃС‚", "СЃРµРј", "РІРѕСЃРµРј", "РґРµРІСЏС‚" };
+		const string fiveToNineEnd[6] = { "СЊ", "Рё", "Рё", "СЊ", "СЊСЋ", "Рё" };
+		const string hungredEnd[6] = { "СЃРѕС‚", "СЃРѕС‚", "СЃС‚Р°Рј", "СЃРѕС‚", "СЃС‚Р°РјРё", "СЃС‚Р°С…" };
 		result += fiveToNineBegin[hungred - 5] + fiveToNineEnd[caseID] + hungredEnd[caseID];
 	}
 	if (hungred > 0)
@@ -70,10 +70,10 @@ std::string getTripleProp(int value, int genderID, int caseID)
 	int dec = value / 10;
 	if (dec == 1)
 	{
-		const string oneToNineBegin[9] = { "один", "две", "три", "четыр", "пят", "шест", "сем", "восем", "девят" };
-		const string end = "надцат";
-		const string ten = "десят";
-		const string endCases[6] = { "ь", "и", "и", "ь", "ью", "и" };
+		const string oneToNineBegin[9] = { "РѕРґРёРЅ", "РґРІРµ", "С‚СЂРё", "С‡РµС‚С‹СЂ", "РїСЏС‚", "С€РµСЃС‚", "СЃРµРј", "РІРѕСЃРµРј", "РґРµРІСЏС‚" };
+		const string end = "РЅР°РґС†Р°С‚";
+		const string ten = "РґРµСЃСЏС‚";
+		const string endCases[6] = { "СЊ", "Рё", "Рё", "СЊ", "СЊСЋ", "Рё" };
 		if (value == 10)
 			result += ten + endCases[caseID];
 		else
@@ -83,14 +83,14 @@ std::string getTripleProp(int value, int genderID, int caseID)
 	{
 		if (dec == 2 || dec == 3)
 		{
-			const string beg[2] = { "два", "три" };
-			const string end = "дцат";
-			const string endCases[6] = { "ь", "и", "и", "ь", "ью", "и" };
+			const string beg[2] = { "РґРІР°", "С‚СЂРё" };
+			const string end = "РґС†Р°С‚";
+			const string endCases[6] = { "СЊ", "Рё", "Рё", "СЊ", "СЊСЋ", "Рё" };
 			result += beg[dec - 2] + end + endCases[caseID];
 		}
 		else if (dec == 4)
 		{
-			const string fortyCases[2] = { "сорок", "сорока" };
+			const string fortyCases[2] = { "СЃРѕСЂРѕРє", "СЃРѕСЂРѕРєР°" };
 			if (caseID == 0 || caseID == 3)
 				result += fortyCases[0];
 			else
@@ -99,7 +99,7 @@ std::string getTripleProp(int value, int genderID, int caseID)
 		}
 		else if (dec == 9)
 		{
-			const string ninetyCases[2] = { "девяносто", "девяноста" };
+			const string ninetyCases[2] = { "РґРµРІСЏРЅРѕСЃС‚Рѕ", "РґРµРІСЏРЅРѕСЃС‚Р°" };
 			if (caseID == 0 || caseID == 3)
 				result += ninetyCases[0];
 			else
@@ -107,10 +107,10 @@ std::string getTripleProp(int value, int genderID, int caseID)
 		}
 		else if (dec > 4 && dec < 9)
 		{
-			const string fiveToEightBegin[4] = { "пят", "шест", "сем", "восем"};
-			const string end = "десят";
-			const string fiveToEightEnd[6] = { "ь", "и", "и", "ь", "ью", "и" };
-			const string fiveToEightEnd2[6] = { "", "и", "и", "", "ью", "и" };
+			const string fiveToEightBegin[4] = { "РїСЏС‚", "С€РµСЃС‚", "СЃРµРј", "РІРѕСЃРµРј"};
+			const string end = "РґРµСЃСЏС‚";
+			const string fiveToEightEnd[6] = { "СЊ", "Рё", "Рё", "СЊ", "СЊСЋ", "Рё" };
+			const string fiveToEightEnd2[6] = { "", "Рё", "Рё", "", "СЊСЋ", "Рё" };
 			result += fiveToEightBegin[dec - 5] + fiveToEightEnd[caseID] + end + fiveToEightEnd2[caseID];
 		}		
 	}
@@ -125,40 +125,40 @@ std::string getTripleProp(int value, int genderID, int caseID)
 	{
 		if (genderID == 1)
 		{
-			const string oneCases[6] = { "одна", "одной", "одной", "одну", "одной", "одной" };
+			const string oneCases[6] = { "РѕРґРЅР°", "РѕРґРЅРѕР№", "РѕРґРЅРѕР№", "РѕРґРЅСѓ", "РѕРґРЅРѕР№", "РѕРґРЅРѕР№" };
 			result += oneCases[caseID];
 		}
 		else
 		{
-			const string oneCases[6] = { "один", "одного", "одному", "один", "одним", "одном" };
+			const string oneCases[6] = { "РѕРґРёРЅ", "РѕРґРЅРѕРіРѕ", "РѕРґРЅРѕРјСѓ", "РѕРґРёРЅ", "РѕРґРЅРёРј", "РѕРґРЅРѕРј" };
 			if (genderID == 2 && (caseID == 0 || caseID == 3))
-				result += "одно";
+				result += "РѕРґРЅРѕ";
 			else
 				result += oneCases[caseID];
 		}
 	}
 	else if (value == 2)
 	{
-		const string twoCases[6] = { "два", "двух", "двум", "два", "двумя", "двух" };
+		const string twoCases[6] = { "РґРІР°", "РґРІСѓС…", "РґРІСѓРј", "РґРІР°", "РґРІСѓРјСЏ", "РґРІСѓС…" };
 		if (genderID == 1 && caseID == 0)
-			result += "две";
+			result += "РґРІРµ";
 		else
 			result += twoCases[caseID];
 	}
 	else if (value == 3)
 	{
-		const string threeCases[6] = { "три", "трех", "трем", "три", "тремя", "трех" };
+		const string threeCases[6] = { "С‚СЂРё", "С‚СЂРµС…", "С‚СЂРµРј", "С‚СЂРё", "С‚СЂРµРјСЏ", "С‚СЂРµС…" };
 		result += threeCases[caseID];
 	}
 	else if (value == 3)
 	{
-		const string fourCases[6] = { "четыре", "четырех", "четырем", "четыре", "четырьмя", "четырех" };
+		const string fourCases[6] = { "С‡РµС‚С‹СЂРµ", "С‡РµС‚С‹СЂРµС…", "С‡РµС‚С‹СЂРµРј", "С‡РµС‚С‹СЂРµ", "С‡РµС‚С‹СЂСЊРјСЏ", "С‡РµС‚С‹СЂРµС…" };
 		result += fourCases[caseID];
 	}
 	else if (value > 4)
 	{
-		const string fiveToNineBegin[5] = { "пят", "шест", "сем", "восем", "девят" };
-		const string fiveToNineEnd[6] = { "ь", "и", "и", "ь", "ью", "и" };
+		const string fiveToNineBegin[5] = { "РїСЏС‚", "С€РµСЃС‚", "СЃРµРј", "РІРѕСЃРµРј", "РґРµРІСЏС‚" };
+		const string fiveToNineEnd[6] = { "СЊ", "Рё", "Рё", "СЊ", "СЊСЋ", "Рё" };
 		result += fiveToNineBegin[value - 5] + fiveToNineEnd[caseID];
 	}
 	return result;
@@ -166,7 +166,7 @@ std::string getTripleProp(int value, int genderID, int caseID)
 
 std::string sumProp(long long nSum, std::string sGender, std::string sCase)
 {
-	vector <string> cases{ "И", "Р", "Д", "В", "Т", "П" };
+	vector <string> cases{ "Р", "Р ", "Р”", "Р’", "Рў", "Рџ" };
 	int caseID = -1;
 	for (int i = 0, end = cases.size(); i < end; i++)
 	{
@@ -178,7 +178,7 @@ std::string sumProp(long long nSum, std::string sGender, std::string sCase)
 	}
 	assert(caseID > -1);
 
-	vector <string> genders{ "М", "Ж", "С" };
+	vector <string> genders{ "Рњ", "Р–", "РЎ" };
 	int genderID = -1;
 	for (int i = 0, end = genders.size(); i < end; i++)
 	{
@@ -192,15 +192,15 @@ std::string sumProp(long long nSum, std::string sGender, std::string sCase)
 	
 	string result;	
 	if (caseID == 5)
-		result += "о ";	
+		result += "Рѕ ";	
 	if (nSum < 0)
 	{
-		result += "минус ";
+		result += "РјРёРЅСѓСЃ ";
 		nSum *= -1;
 	}
 	else if (nSum == 0)
 	{
-		vector <string> zeroCases{ "ноль", "ноля", "нолю", "ноль", "нолем", "ноле" };
+		vector <string> zeroCases{ "РЅРѕР»СЊ", "РЅРѕР»СЏ", "РЅРѕР»СЋ", "РЅРѕР»СЊ", "РЅРѕР»РµРј", "РЅРѕР»Рµ" };
 		return result + zeroCases[caseID];
 	}
 
@@ -216,37 +216,37 @@ std::string sumProp(long long nSum, std::string sGender, std::string sCase)
 		if (tripleProp.size() == 1)
 		{
 			int thousands = nSum % 1000;
-			vector <string> thousandCases{ "тысяч", "тысяч", "тысячам", "тысяч", "тысячами", "тысячах" };
+			vector <string> thousandCases{ "С‚С‹СЃСЏС‡", "С‚С‹СЃСЏС‡", "С‚С‹СЃСЏС‡Р°Рј", "С‚С‹СЃСЏС‡", "С‚С‹СЃСЏС‡Р°РјРё", "С‚С‹СЃСЏС‡Р°С…" };
 			if (thousands % 10 > 0 && thousands % 10 < 5)
 			{
 				if (thousands % 10 == 1)
-					thousandCases = { "тысяча", "тысячи", "тысяче", "тысяча", "тысячей", "тысяче" };
+					thousandCases = { "С‚С‹СЃСЏС‡Р°", "С‚С‹СЃСЏС‡Рё", "С‚С‹СЃСЏС‡Рµ", "С‚С‹СЃСЏС‡Р°", "С‚С‹СЃСЏС‡РµР№", "С‚С‹СЃСЏС‡Рµ" };
 				else
-					thousandCases[0] = thousandCases[3] = "тысячи";
+					thousandCases[0] = thousandCases[3] = "С‚С‹СЃСЏС‡Рё";
 			}				
 			tripleResult += thousandCases[caseID];
 		}
 		else if (tripleProp.size() == 2)
 		{
-			vector <string> millionCases{ "миллионов", "миллионов", "миллионам", "миллионов", "миллиона", "миллионах" };
+			vector <string> millionCases{ "РјРёР»Р»РёРѕРЅРѕРІ", "РјРёР»Р»РёРѕРЅРѕРІ", "РјРёР»Р»РёРѕРЅР°Рј", "РјРёР»Р»РёРѕРЅРѕРІ", "РјРёР»Р»РёРѕРЅР°", "РјРёР»Р»РёРѕРЅР°С…" };
 			int millions = nSum % 1000;			
 			if (millions % 10 > 1 && millions % 10 < 5)
 			{
 				if (millions % 10 == 1)
-					millionCases[0] = millionCases[3] = "миллион";
+					millionCases[0] = millionCases[3] = "РјРёР»Р»РёРѕРЅ";
 				else
-					millionCases[0] = millionCases[3] = "миллиона";
+					millionCases[0] = millionCases[3] = "РјРёР»Р»РёРѕРЅР°";
 			}
 			tripleResult += millionCases[caseID];
 		}
 		else if (tripleProp.size() == 3)
 		{
-			vector <string> billionCases{ "миллиардов", "миллиардов", "миллиардам", "миллиардов", "миллиардами", "миллиардах" };
+			vector <string> billionCases{ "РјРёР»Р»РёР°СЂРґРѕРІ", "РјРёР»Р»РёР°СЂРґРѕРІ", "РјРёР»Р»РёР°СЂРґР°Рј", "РјРёР»Р»РёР°СЂРґРѕРІ", "РјРёР»Р»РёР°СЂРґР°РјРё", "РјРёР»Р»РёР°СЂРґР°С…" };
 			int decBillions = (nSum % 1000) % 10;
 			if (decBillions > 1 && decBillions < 5)
-				billionCases[0] = billionCases[3] = "миллиард";
+				billionCases[0] = billionCases[3] = "РјРёР»Р»РёР°СЂРґ";
 			else if (decBillions == 1)
-				billionCases[0] = billionCases[3] = "миллиард";
+				billionCases[0] = billionCases[3] = "РјРёР»Р»РёР°СЂРґ";
 				
 
 			
