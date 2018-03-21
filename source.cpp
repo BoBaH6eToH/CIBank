@@ -21,8 +21,8 @@ int main()
 	{
 		if (!(cin >> value))
 			value = rand() % 999999999;
-		vector <string> cases{ "È", "Ð", "Ä", "Â", "Ò", "Ï" };
-		vector <string> genders{ "Ì", "Æ", "Ñ" };
+		vector <string> cases{ "Ð˜", "Ð ", "Ð”", "Ð’", "Ð¢", "ÐŸ" };
+		vector <string> genders{ "Ðœ", "Ð–", "Ð¡" };
 		int a, b;
 		a = rand() % 6;
 		b = rand() % 3;
