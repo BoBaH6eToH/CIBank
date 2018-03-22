@@ -9,13 +9,16 @@
 
 using namespace std;
 
+#define CASE_SIZE 6
+
 std::string getTripleProp(int value, int genderID, int caseID)
 {
 	string result;	
 	if (value == 0)
 		return result;
 
-	int hungred = value / 100;
+	/* обработка количества сотен */
+	int hungred = value / 100;	
 	if (hungred == 1)
 	{
 		const string oneHungredCases[2] = { "сто", "ста" };
@@ -26,10 +29,10 @@ std::string getTripleProp(int value, int genderID, int caseID)
 	}
 	else if (hungred > 1 && hungred < 5)
 	{
-		const string end[6] = { "сти", "сот", "мстам", "ста", "мястами", "хстах" };
+		const string end[CASE_SIZE] = { "сти", "сот", "мстам", "ста", "мястами", "хстах" };
 		if (hungred == 2)
 		{
-			const string two[6] = { "две", "двух", "двум", "две", "двумя", "двух" };
+			const string two[CASE_SIZE] = { "две", "двух", "двум", "две", "двумя", "двух" };
 			result += two[caseID];
 			if (caseID == 3)
 				result += end[0];
@@ -58,8 +61,8 @@ std::string getTripleProp(int value, int genderID, int caseID)
 	else if (hungred > 4)
 	{
 		const string fiveToNineBegin[5] = { "пят", "шест", "сем", "восем", "девят" };
-		const string fiveToNineEnd[6] = { "ь", "и", "и", "ь", "ью", "и" };
-		const string hungredEnd[6] = { "сот", "сот", "стам", "сот", "стами", "стах" };
+		const string fiveToNineEnd[CASE_SIZE] = { "ь", "и", "и", "ь", "ью", "и" };
+		const string hungredEnd[CASE_SIZE] = { "сот", "сот", "стам", "сот", "стами", "стах" };
 		result += fiveToNineBegin[hungred - 5] + fiveToNineEnd[caseID] + hungredEnd[caseID];
 	}
 	if (hungred > 0)
@@ -67,13 +70,14 @@ std::string getTripleProp(int value, int genderID, int caseID)
 
 	value %= 100;
 
-	int dec = value / 10;
+	/* обработка количества десятков */
+	int dec = value / 10;	
 	if (dec == 1)
 	{
 		const string oneToNineBegin[9] = { "один", "две", "три", "четыр", "пят", "шест", "сем", "восем", "девят" };
 		const string end = "надцат";
 		const string ten = "десят";
-		const string endCases[6] = { "ь", "и", "и", "ь", "ью", "и" };
+		const string endCases[CASE_SIZE] = { "ь", "и", "и", "ь", "ью", "и" };
 		if (value == 10)
 			result += ten + endCases[caseID];
 		else
@@ -85,7 +89,7 @@ std::string getTripleProp(int value, int genderID, int caseID)
 		{
 			const string beg[2] = { "два", "три" };
 			const string end = "дцат";
-			const string endCases[6] = { "ь", "и", "и", "ь", "ью", "и" };
+			const string endCases[CASE_SIZE] = { "ь", "и", "и", "ь", "ью", "и" };
 			result += beg[dec - 2] + end + endCases[caseID];
 		}
 		else if (dec == 4)
@@ -109,8 +113,8 @@ std::string getTripleProp(int value, int genderID, int caseID)
 		{
 			const string fiveToEightBegin[4] = { "пят", "шест", "сем", "восем"};
 			const string end = "десят";
-			const string fiveToEightEnd[6] = { "ь", "и", "и", "ь", "ью", "и" };
-			const string fiveToEightEnd2[6] = { "", "и", "и", "", "ью", "и" };
+			const string fiveToEightEnd[CASE_SIZE] = { "ь", "и", "и", "ь", "ью", "и" };
+			const string fiveToEightEnd2[CASE_SIZE] = { "", "и", "и", "", "ью", "и" };
 			result += fiveToEightBegin[dec - 5] + fiveToEightEnd[caseID] + end + fiveToEightEnd2[caseID];
 		}		
 	}
@@ -121,16 +125,17 @@ std::string getTripleProp(int value, int genderID, int caseID)
 	else
 		return result;
 
+	/* обработка количества единиц */
 	if (value == 1)
 	{
 		if (genderID == 1)
 		{
-			const string oneCases[6] = { "одна", "одной", "одной", "одну", "одной", "одной" };
+			const string oneCases[CASE_SIZE] = { "одна", "одной", "одной", "одну", "одной", "одной" };
 			result += oneCases[caseID];
 		}
 		else
 		{
-			const string oneCases[6] = { "один", "одного", "одному", "один", "одним", "одном" };
+			const string oneCases[CASE_SIZE] = { "один", "одного", "одному", "один", "одним", "одном" };
 			if (genderID == 2 && (caseID == 0 || caseID == 3))
 				result += "одно";
 			else
@@ -139,7 +144,7 @@ std::string getTripleProp(int value, int genderID, int caseID)
 	}
 	else if (value == 2)
 	{
-		const string twoCases[6] = { "два", "двух", "двум", "два", "двумя", "двух" };
+		const string twoCases[CASE_SIZE] = { "два", "двух", "двум", "два", "двумя", "двух" };
 		if (genderID == 1 && caseID == 0)
 			result += "две";
 		else
@@ -147,20 +152,24 @@ std::string getTripleProp(int value, int genderID, int caseID)
 	}
 	else if (value == 3)
 	{
-		const string threeCases[6] = { "три", "трех", "трем", "три", "тремя", "трех" };
+		const string threeCases[CASE_SIZE] = { "три", "трех", "трем", "три", "тремя", "трех" };
 		result += threeCases[caseID];
 	}
 	else if (value == 3)
 	{
-		const string fourCases[6] = { "четыре", "четырех", "четырем", "четыре", "четырьмя", "четырех" };
+		const string fourCases[CASE_SIZE] = { "четыре", "четырех", "четырем", "четыре", "четырьмя", "четырех" };
 		result += fourCases[caseID];
 	}
 	else if (value > 4)
 	{
-		const string fiveToNineBegin[5] = { "пят", "шест", "сем", "восем", "девят" };
-		const string fiveToNineEnd[6] = { "ь", "и", "и", "ь", "ью", "и" };
+		string fiveToNineBegin[5] = { "пят", "шест", "сем", "восем", "девят" };
+		const string fiveToNineEnd[CASE_SIZE] = { "ь", "и", "и", "ь", "ью", "и" };
+		if (value == 8 && !(caseID == 0 || caseID == 3))
+			fiveToNineBegin[value - 5][3] = 'ь';
 		result += fiveToNineBegin[value - 5] + fiveToNineEnd[caseID];
 	}
+	if (value != 0)
+		result += " ";
 	return result;
 }
 
@@ -191,7 +200,7 @@ std::string sumProp(long long nSum, std::string sGender, std::string sCase)
 	assert(genderID > -1);	
 	
 	string result;	
-	if (caseID == 5)
+	if (caseID == 5)		// Case == "П"
 		result += "о ";	
 	if (nSum < 0)
 	{
@@ -204,7 +213,17 @@ std::string sumProp(long long nSum, std::string sGender, std::string sCase)
 		return result + zeroCases[caseID];
 	}
 
-	deque <string> tripleProp;
+	deque <string> tripleProp;	// дек для хранения строк для каждой из разрядных троек
+
+	/* Алгоритм: разбиваем исходное число на разрядные тройки: 
+	 - до 1000
+	 - тысячи
+	 - миллионы
+	 - миллиарды
+		Написание числа для каждой из троек вычисляется независимо в функции getTripleProp 
+	 и помещается в getTripleProp с указанием разрядного множителя, если необходимо. После
+	 вычисления последней тройки, строится полное представление числа.
+	 */
 	while (nSum > 0)
 	{
 		int tempGenderID = genderID;
@@ -220,7 +239,7 @@ std::string sumProp(long long nSum, std::string sGender, std::string sCase)
 			if (thousands % 10 > 0 && thousands % 10 < 5)
 			{
 				if (thousands % 10 == 1)
-					thousandCases = { "тысяча", "тысячи", "тысяче", "тысяча", "тысячей", "тысяче" };
+					thousandCases = { "тысяча", "тысячи", "тысячу", "тысяча", "тысячей", "тысяче" };
 				else
 					thousandCases[0] = thousandCases[3] = "тысячи";
 			}				
@@ -233,7 +252,7 @@ std::string sumProp(long long nSum, std::string sGender, std::string sCase)
 			if (millions % 10 > 1 && millions % 10 < 5)
 			{
 				if (millions % 10 == 1)
-					millionCases[0] = millionCases[3] = "миллион";
+					millionCases = { "миллион", "миллион", "миллиону", "миллион", "миллионом", "миллионе" };
 				else
 					millionCases[0] = millionCases[3] = "миллиона";
 			}
@@ -246,7 +265,7 @@ std::string sumProp(long long nSum, std::string sGender, std::string sCase)
 			if (decBillions > 1 && decBillions < 5)
 				billionCases[0] = billionCases[3] = "миллиард";
 			else if (decBillions == 1)
-				billionCases[0] = billionCases[3] = "миллиард";
+				billionCases = { "миллиард", "миллиарда", "миллиарду", "миллиард", "миллиардом", "миллиарде" };
 				
 
 			
