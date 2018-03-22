@@ -17,10 +17,10 @@ int main()
 	srand(time(0));
 
 	long long value;
-	for (int i = 0; i < 20; i++)
+	for (int i = 0, end = (rand() % 100); i < end; i++)
 	{
 		if (!(cin >> value))
-			value = rand() % 999999999;
+			value = rand() % 9999999;
 		vector <string> cases{ "И", "Р", "Д", "В", "Т", "П" };
 		vector <string> genders{ "М", "Ж", "С" };
 		int a, b;
